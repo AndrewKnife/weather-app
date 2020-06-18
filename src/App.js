@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './assets/styles/style.scss';
+import {useSelector, useDispatch} from "react-redux";
+import weatherActions from "./store/weather/weatherActions";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const data = useSelector(state => state.weather)
+    const dispatch = useDispatch()
+    return (
+        <div className="App">
+            <header className="App-header">
+                <p>
+                    Edit <code>src/App.js</code> and save to reload.
+                </p>
+                <a className="App-link"
+                   href="https://reactjs.org"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    {data}
+                </a>
+                <button onClick={() => dispatch(weatherActions.addItem())}>add</button>
+            </header>
+        </div>
+    );
 }
 
 export default App;
