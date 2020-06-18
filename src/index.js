@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/styles/style.scss';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux'
+import './assets/styles/index.scss';
+import * as serviceWorker from './services/serviceWorker';
+import {createStore} from 'redux';
+import {allReducers} from "./store";
 
+const store = createStore(
+    allReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+store.subscribe(() => console.log(store.getState()))
+
+const rootElement = document.getElementById('root')
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    rootElement
+)
 
 serviceWorker.unregister();
