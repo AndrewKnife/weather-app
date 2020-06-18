@@ -1,5 +1,5 @@
 import React from "react";
-import weatherActions, {WEATHER_ACTIONS} from "../store/weather/weatherActions";
+import {WEATHER_ACTIONS} from "../store/weather/weatherActions";
 import {connect} from 'react-redux'
 
 class ForecastList extends React.Component {
@@ -11,7 +11,6 @@ class ForecastList extends React.Component {
     }
 
     componentDidMount() {
-        // dispatch(() => weatherActions.loadForecast())
         this.props.loadForecast()
     }
 
