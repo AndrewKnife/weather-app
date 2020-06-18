@@ -1,9 +1,7 @@
 import React from 'react';
-import {useSelector} from "react-redux";
 import ForecastList from "./components/ForecastList";
 
 function App() {
-    // const data = useSelector(state => state.weather)
     return (
         <div className="App">
             <header className="App-header">
