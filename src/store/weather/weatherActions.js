@@ -1,11 +1,11 @@
 export const WEATHER_ACTIONS = {
-    ADD_ITEM: 'ADD_ITEM'
+    LOAD_FORECAST: 'LOAD_FORECAST'
 }
 
 class weatherActions {
-    static addItem = () => {
+    static loadForecast = () => {
         return {
-            type: WEATHER_ACTIONS.ADD_ITEM
+            type: WEATHER_ACTIONS.LOAD_FORECAST
         };
     };
 }
