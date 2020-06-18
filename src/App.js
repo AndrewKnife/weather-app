@@ -1,10 +1,9 @@
 import React from 'react';
-import {useSelector, useDispatch} from "react-redux";
-import weatherActions from "./store/weather/weatherActions";
+import {useSelector} from "react-redux";
+import ForecastList from "./components/ForecastList";
 
 function App() {
-    const data = useSelector(state => state.weather)
-    const dispatch = useDispatch()
+    // const data = useSelector(state => state.weather)
     return (
         <div className="App">
             <header className="App-header">
@@ -15,9 +14,8 @@ function App() {
                    href="https://reactjs.org"
                    target="_blank"
                    rel="noopener noreferrer">
-                    {data}
                 </a>
-                <button onClick={() => dispatch(weatherActions.addItem())}>add</button>
+                <ForecastList/>
             </header>
         </div>
     );
