@@ -3,9 +3,11 @@ export const WEATHER_ACTIONS = {
 }
 
 class weatherActions {
-    static loadForecast = () => {
+    static loadForecast = (lat, lon) => {
         return {
-            type: WEATHER_ACTIONS.LOAD_FORECAST
+            type: WEATHER_ACTIONS.LOAD_FORECAST,
+            lat,
+            lon
         };
     };
 }

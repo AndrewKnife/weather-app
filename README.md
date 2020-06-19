@@ -1,6 +1,6 @@
 # Weather App
 
-An application that shows you the current weather and lets you check out all the weather around the world.
+An application that shows you the current location and lets you check out all the location around the world.
 
 Run `npm install` after pulling the project.
 
@@ -20,3 +20,6 @@ Launches the test runner in the interactive watch mode.<br />
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
+
+### `set HTTPS=true&&npm start`
+Run this, if the location is inaccessible due to HTTP deprecation.

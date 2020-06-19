@@ -1,5 +1,5 @@
 import React from "react";
-import {WEATHER_ACTIONS} from "../store/weather/weatherActions";
+import weatherActions from "../store/weather/weatherActions";
 import {connect} from 'react-redux'
 
 class ForecastList extends React.Component {
@@ -11,7 +11,12 @@ class ForecastList extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadForecast()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location !== this.props.location) {
+            this.props.loadForecast(this.props.location.lat, this.props.location.lon)
+        }
     }
 
     render() {
@@ -19,7 +24,7 @@ class ForecastList extends React.Component {
             <div>
                 <p>You clicked {this.state.count} times</p>
                 <button onClick={() => this.setState({count: this.state.count + 1})}>
-                    {this.props.nice}
+                    {'labas'}
                 </button>
             </div>
         );
@@ -28,14 +33,15 @@ class ForecastList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        data: state,
-        nice: 'state'
+        location: state.location
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadForecast: () => { dispatch({type: WEATHER_ACTIONS.LOAD_FORECAST}) }
+        loadForecast: (lat, lon) => {
+            dispatch(weatherActions.loadForecast(lat, lon))
+        }
     }
 }
 
