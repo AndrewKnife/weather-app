@@ -3,7 +3,7 @@ import weatherActions from "../store/weather/weatherActions";
 import {connect} from 'react-redux'
 import ForecastCard from "./ForecastCard";
 
-class ForecastList extends Component {
+class CurrentWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,9 +23,9 @@ class ForecastList extends Component {
     render() {
         return (
             <div>
-                {this.props.weather.map((item, i) => {
-                    return (<ForecastCard key={i} forecast={item}/>)
-                })}
+                {this.props.weather.current &&
+                <ForecastCard forecast={this.props.weather.current}/>
+                }
             </div>
         );
     }
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForecastList)
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeather)

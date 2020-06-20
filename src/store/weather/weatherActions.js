@@ -1,5 +1,8 @@
 export const WEATHER_ACTIONS = {
-    LOAD_FORECAST: 'LOAD_FORECAST'
+    LOAD_FORECAST: 'LOAD_FORECAST',
+    LOAD_FAVORITES: 'LOAD_FAVORITES',
+    ADD_FAVORITE: 'ADD_FAVORITE',
+    REMOVE_FAVORITE: 'REMOVE_FAVORITE'
 }
 
 class weatherActions {
@@ -8,6 +11,25 @@ class weatherActions {
             type: WEATHER_ACTIONS.LOAD_FORECAST,
             lat,
             lon
+        };
+    };
+    static loadFavorites = () => {
+        return {
+            type: WEATHER_ACTIONS.LOAD_FAVORITES
+        };
+    };
+    static addFavorite = (lat, lon, name) => {
+        return {
+            type: WEATHER_ACTIONS.ADD_FAVORITE,
+            lat,
+            lon,
+            name
+        };
+    };
+    static removeFavorite = (name) => {
+        return {
+            type: WEATHER_ACTIONS.REMOVE_FAVORITE,
+            name
         };
     };
 }
