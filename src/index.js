@@ -7,6 +7,7 @@ import * as serviceWorker from './services/serviceWorker';
 import {createStore} from 'redux';
 import {allReducers} from "./store";
 import locationActions from "./store/location/locationActions";
+import TranslationsHelper from "./services/helpers/TranslationsHelper";
 
 const store = createStore(
     allReducers,
@@ -18,6 +19,8 @@ if (navigator.geolocation) {
         store.dispatch(locationActions.getLocation(position.coords.latitude, position.coords.longitude))
     })
 }
+
+TranslationsHelper.init()
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(

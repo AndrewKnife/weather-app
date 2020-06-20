@@ -3,7 +3,7 @@ import RequestHelper from "../../services/helpers/RequestHelper";
 import {REQUEST_URL} from "../../services/GlobalConstants";
 import WeatherForecast from "../../modules/WeatherForecast";
 
-let initialState = WeatherForecast;
+let initialState = [];
 
 const config = {
     headers: {
@@ -26,7 +26,7 @@ const weather = (state = initialState, action) => {
             requestData.lon = action.lon
             // let res = RequestHelper.sendGetRequest(REQUEST_URL.WEATHER, requestData, config)
             let res = require('../../assets/json/exampleForecastData.json')
-            return state = new WeatherForecast().loadFromResponse(res);
+            return [...state, new WeatherForecast().loadFromResponse(res)];
         default:
             return state;
     }
