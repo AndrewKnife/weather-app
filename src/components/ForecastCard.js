@@ -13,12 +13,12 @@ class ForecastCard extends React.Component {
 
     render() {
         return (
-            <div className="text-center">
+            <div className="text-center forecast-card m-auto my-4">
                 <span>{this.props.forecast.name}</span>
                 <div className="col-12">
-                    <div className="icon"></div>
-                    <div className="">{this.props.forecast.main.temp}</div>
-                    <div className="">
+                    <div className="d-inline-block"></div>
+                    <div className="d-inline-block">{this.props.forecast.main.temp}</div>
+                    <div className="d-inline-block">
                         <div>{TranslationsHelper.translate('precipitation')}</div>
                         <div>{TranslationsHelper.translate('humidity')}</div>
                         <div>{TranslationsHelper.translate('wind')}</div>

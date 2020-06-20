@@ -5,14 +5,14 @@ import WeatherForecast from "../../modules/WeatherForecast";
 
 let initialState = [];
 
-const config = {
+let config = {
     headers: {
         'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': 'd192a6c18dmsh5eba2a2fc7e458ep1a41a7jsn1cad2c920bf6',
+        'x-rapidapi-key': '',
         'useQueryString': true,
     }
 }
-const requestData = {
+let requestData = {
     "callback": "test",
     "id": "2172797",
     "units": "metric",
@@ -24,6 +24,7 @@ const weather = (state = initialState, action) => {
         case WEATHER_ACTIONS.LOAD_FORECAST:
             requestData.lat = action.lat
             requestData.lon = action.lon
+            config.headers["x-rapidapi-key"] = process.env.REACT_APP_WEATHER_API_KEY
             // let res = RequestHelper.sendGetRequest(REQUEST_URL.WEATHER, requestData, config)
             let res = require('../../assets/json/exampleForecastData.json')
             return [...state, new WeatherForecast().loadFromResponse(res)];
