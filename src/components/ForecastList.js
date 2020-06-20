@@ -1,8 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import weatherActions from "../store/weather/weatherActions";
 import {connect} from 'react-redux'
+import ForecastCard from "./ForecastCard";
 
-class ForecastList extends React.Component {
+class ForecastList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,10 +23,9 @@ class ForecastList extends React.Component {
     render() {
         return (
             <div>
-                <p>You clicked {this.state.count} times</p>
-                <button onClick={() => this.setState({count: this.state.count + 1})}>
-                    {'labas'}
-                </button>
+                {this.props.weather.map((item, i) => {
+                    return (<ForecastCard key={i} forecast={item}/>)
+                })}
             </div>
         );
     }
@@ -33,7 +33,8 @@ class ForecastList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        location: state.location
+        location: state.location,
+        weather: state.weather
     }
 }
 
