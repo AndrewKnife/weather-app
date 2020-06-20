@@ -1,0 +1,7 @@
+$display-values: (inline-block);
+
+@each $value in $display-values {
+  .d-#{$value} {
+    display: $value;
+  }
+}

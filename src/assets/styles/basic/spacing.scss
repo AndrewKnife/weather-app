@@ -1,0 +1,32 @@
+$spaceAmounts: (0.25, 0.5, 1, 1.5, 3, 4);
+$sides: ("": "all", "t": "top", "b": "bottom", "l": "left", "r": "right");
+
+$vertices: ("m": "margin", "p": "padding");
+
+.m-auto {
+  margin: auto;
+}
+
+@for $i from 1 through length($spaceAmounts) {
+  $space: nth($spaceAmounts, $i);
+  @each $prefix, $value in $sides {
+    $property: if($prefix == '', '', -#{$value});
+    .m#{$prefix}-#{$i} {
+      margin#{$property}: #{$space}rem;
+    }
+    .p#{$prefix}-#{$i} {
+      padding#{$property}: #{$space}rem;
+    }
+  }
+  @each $prefix, $value in $vertices {
+    $property: if($prefix == '', '', #{$value});
+    .#{$prefix}x-#{$i} {
+      #{$property}-left: #{$space}rem;
+      #{$property}-right: #{$space}rem;
+    }
+    .#{$prefix}y-#{$i} {
+      #{$property}-top: #{$space}rem;
+      #{$property}-bottom: #{$space}rem;
+    }
+  }
+}
