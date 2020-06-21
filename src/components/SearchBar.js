@@ -1,4 +1,5 @@
 import React from "react";
+import InputDropDown from "./basic/InputDropDown";
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="col-12 text-center">
-                <input type="search"/>
+                <InputDropDown/>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import SiteConfig from "../SiteConfig";
-import UtilityHelper from "./UtilityHelper";
+import {formatString} from "./UtilityHelper";
 
 const ERROR_USING_DEFAULT_TRANSLATIONS = '%s - was not found! Using default translations'
 const FILE_TYPE = '.json'
@@ -23,12 +23,12 @@ class TranslationsHelper {
 
     useFallbackTranslations() {
         this.translations = require('../../assets/translations/en' + FILE_TYPE)
-        console.error(UtilityHelper.formatString(ERROR_USING_DEFAULT_TRANSLATIONS, SiteConfig.locale + FILE_TYPE))
+        console.error(formatString(ERROR_USING_DEFAULT_TRANSLATIONS, SiteConfig.locale + FILE_TYPE))
     }
 
     translate(key, ...data) {
         if (data) {
-            return UtilityHelper.formatString(this.translations[key], ...data)
+            return formatString(this.translations[key], ...data)
         }
         return this.translations[key]
     }
