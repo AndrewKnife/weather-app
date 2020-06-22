@@ -6,15 +6,9 @@ import ForecastCard from "./ForecastCard";
 class CurrentWeather extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            count: 0
-        };
     }
 
-    componentDidMount() {
-    }
-
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState, ss) {
         if (prevProps.location !== this.props.location) {
             this.props.loadForecast(this.props.location.lat, this.props.location.lon)
         }

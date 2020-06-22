@@ -9,22 +9,40 @@ import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
 class ForecastCard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isFavorite: false
+        }
+        this.toggleFavorite = this.toggleFavorite.bind(this)
+        this.checkFavorite = this.checkFavorite.bind(this)
     }
 
     toggleFavorite() {
-        if (this.isFavorite()) {
+        this.checkFavorite()
+        if (this.state.isFavorite) {
             this.props.removeFavorite(this.props.forecast.name)
         } else {
             this.props.addFavorite(this.props.forecast.coord.lat, this.props.forecast.coord.lon, this.props.forecast.name)
         }
     }
 
-    isFavorite() {
-        return findObjectInArrayByKeyValue(this.props.weather.favorites, 'name', this.props.forecast.name) !== null
+    componentDidMount() {
+        this.checkFavorite()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.weather.favorites !== this.props.weather.favorites) {
+            this.checkFavorite()
+        }
+    }
+
+    checkFavorite = () => {
+        this.setState(() => ({
+                isFavorite: findObjectInArrayByKeyValue(this.props.weather.favorites, 'name', this.props.forecast.name) !== null
+            })
+        )
     }
 
     render() {
-        let isFavorite = this.isFavorite()
         return (
             <div className="text-center forecast-card m-auto my-4">
                 <span>{this.props.forecast.name}</span>
@@ -38,7 +56,7 @@ class ForecastCard extends React.Component {
                     </div>
                     <div className="position-absolute">
                         <button
-                            onClick={this.toggleFavorite.bind(this)}>{isFavorite ? 'un' : ''}Favorite
+                            onClick={this.toggleFavorite}>{this.state.isFavorite ? 'un' : ''}Favorite
                         </button>
                     </div>
                 </div>

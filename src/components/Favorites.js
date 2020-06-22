@@ -1,4 +1,5 @@
 import React from "react";
+import FavoritesList from "./FavoritesList";
 
 class Favorites extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Favorites extends React.Component {
         return (
             <div className="text-center">
                 <h2>Favorites</h2>
+                <FavoritesList/>
             </div>
         );
     }
