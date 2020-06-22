@@ -6,8 +6,17 @@
 
   input {
     height: 30px;
+    padding: 0 10px;
+    width: auto;
+
+    &.invalid {
+      border: 1px solid red;
+      color: red;
+    }
 
     &:focus {
+      border: inherit;
+      color: inherit;
 
       + ol {
         display: block;
@@ -15,12 +24,8 @@
     }
   }
 
-  input {
-    padding: 0 10px;
-    width: auto;
-  }
-
   ol {
+    z-index: 1;
     display: none;
     position: absolute;
     left: 0;

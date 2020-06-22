@@ -55,8 +55,11 @@ class ForecastCard extends React.Component {
           </button>
         </div>
         <div className="col-12 text-center d-flex items-center">
-          <div className="col-7 position-relative d-flex justify-center items-center">
-            <img src={require('../assets/images/weather/01d.png')} className="weather-icon pb-5" alt="weather-icon" width="100px"/>
+          <div className="col-2">
+            <img src={require('../assets/images/weather/01d.png')} className="weather-icon pb-5" alt="weather-icon"
+                 width="100px"/>
+          </div>
+          <div className="col-5 position-relative d-flex justify-center items-center">
             <span className="font-size-xxxl display-inline-block position-relative">
               {this.props.forecast.main.temp} <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
             </span>
@@ -67,18 +70,20 @@ class ForecastCard extends React.Component {
           </div>
           <div className="col-5">
             <table className="d-inline-block text-left">
+              <tbody>
               <tr>
                 <td>{TranslationsHelper.translate('pressure')}:</td>
                 <td>{this.props.forecast.main.pressure}{UNIT.MILLIBARS}</td>
               </tr>
               <tr>
-                <td>{TranslationsHelper.translate('humidity')}: </td>
+                <td>{TranslationsHelper.translate('humidity')}:</td>
                 <td>{this.props.forecast.main.humidity}{UNIT.PERCENT}</td>
               </tr>
               <tr>
                 <td>{TranslationsHelper.translate('wind')}:</td>
                 <td>{this.props.forecast.wind.speed}{UNIT.KM_H}</td>
               </tr>
+              </tbody>
             </table>
           </div>
         </div>

@@ -3,5 +3,6 @@
   "humidity": "Humidity",
   "wind": "Wind",
   "country": "Country",
-  "city": "City"
+  "city": "City",
+  "no-favorites-message": "You don't have any favorites yet!"
 }

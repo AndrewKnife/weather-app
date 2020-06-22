@@ -7,7 +7,7 @@ class LocalStorage {
     }
 
     getDataByKey(key) {
-        return JSON.parse(localStorage[key] || null) || {};
+        return JSON.parse(localStorage[key] || null);
     }
 
     saveToStorage(key, data) {

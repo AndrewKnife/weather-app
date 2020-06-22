@@ -2,6 +2,9 @@ import React from 'react';
 import InputDropDown from "./basic/InputDropDown";
 import FormButton from "./basic/FormButton";
 import TranslationsHelper from "../services/helpers/TranslationsHelper";
+import {formatString} from "../services/helpers/UtilityHelper";
+import {connect} from "react-redux";
+import historyActions from "../store/history/historyActions";
 
 const COUNTRIES_KEY = 'countries'
 const DATA_FILE_TYPE = '.json'
@@ -13,7 +16,8 @@ class SearchBar extends React.Component {
       countriesList: [],
       citiesList: [],
       countryString: '',
-      cityString: ''
+      cityString: '',
+      invalidCountry: false
     }
     this.onCountryInput = this.onCountryInput.bind(this)
     this.onCityInput = this.onCityInput.bind(this)
@@ -25,7 +29,8 @@ class SearchBar extends React.Component {
 
   onCountryInput(value) {
     this.setState(() => ({
-      countryString: value
+      countryString: value,
+      cityString: ''
     }))
   }
 
@@ -56,22 +61,25 @@ class SearchBar extends React.Component {
             citiesList: data[this.state.countryString]
           }))
         })
+        this.setState({invalidCountry: false})
       } catch (e) {
-        console.log(e)
+        this.setState({invalidCountry: true, citiesList: []})
       }
     } else {
-      console.log('the country is invalid')
+      this.setState({invalidCountry: true, citiesList: []})
     }
   }
 
-  searchAction() {
-
+  searchAction(e) {
+    e.preventDefault()
+    this.props.updateHistory(formatString('%s,%s', this.state.cityString, this.state.countryString))
   }
 
   render() {
     return (
       <form className="col-12 text-center" onClick={this.loadCountries}>
         <InputDropDown value={this.state.countryString} list={this.state.countriesList}
+                       class={this.state.invalidCountry ? 'invalid' : null}
                        onChange={this.onCountryInput} placeholder={TranslationsHelper.translate('country')}/>
         <InputDropDown value={this.state.cityString} list={this.state.citiesList} onChange={this.onCityInput}
                        onActive={this.onCityActive} placeholder={TranslationsHelper.translate('city')}/>
@@ -81,4 +89,12 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateHistory: (query) => {
+      dispatch(historyActions.updateHistory(query))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar)
