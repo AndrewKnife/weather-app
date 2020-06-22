@@ -13,7 +13,7 @@ class FormButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>Search</button>
+      <button className="mx-2" onClick={this.handleClick}>Search</button>
     );
   }
 }

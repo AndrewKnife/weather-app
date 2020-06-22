@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import weatherActions from "../store/weather/weatherActions";
 import {connect} from 'react-redux'
 import ForecastCard from "./ForecastCard";
+import TranslationsHelper from "../services/helpers/TranslationsHelper";
 
 class FavoritesList extends Component {
   constructor(props) {
@@ -20,11 +21,18 @@ class FavoritesList extends Component {
   }
 
   render() {
+    const hasItems = this.filterList().length > 0
+    let message = null
+    if (!hasItems) {
+      message = <span>{TranslationsHelper.translate('no-favorites-message')}</span>
+    }
+
     return (
       <div>
         {this.filterList().map((item, i) => {
           return (<ForecastCard key={i} forecast={item}/>)
         })}
+        {message}
       </div>
     );
   }

@@ -38,9 +38,9 @@ class InputDropDown extends React.Component {
   render() {
     const listItems = this.filteredList()
     return (
-      <div className="input-form">
+      <div className="input-form mx-2">
         <input type="search" value={this.props.value} onChange={this.handleChange} onClick={this.handleActive}
-               placeholder={this.props.placeholder}/>
+               placeholder={this.props.placeholder} className={this.props.class}/>
         <ol className="input-dd">
           {listItems.map((item) => {
             return (
@@ -58,7 +58,8 @@ InputDropDown.propTypes = {
   placeholder: PropTypes.string,
   list: PropTypes.array,
   onChange: PropTypes.func,
-  onActive: PropTypes.func
+  onActive: PropTypes.func,
+  class: PropTypes.string
 };
 
 export default InputDropDown
