@@ -35,7 +35,7 @@ const weather = (state = initialState, action) => {
             requestData.lon = action.lon
             config.headers["x-rapidapi-key"] = process.env.REACT_APP_WEATHER_API_KEY
             // let res = RequestHelper.sendGetRequest(REQUEST_URL.WEATHER, requestData, config)
-            res = require('../../assets/json/exampleForecastData.json')
+            res = require('../../assets/json/exampleForecastData_lt.json')
             return {current: new WeatherForecast().loadFromResponse(res), favorites: state.favorites};
         case WEATHER_ACTIONS.LOAD_FAVORITES:
             favs = LocalStorage.getDataByKey(LS_FAVORITES)

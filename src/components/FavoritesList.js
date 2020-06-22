@@ -6,21 +6,23 @@ import ForecastCard from "./ForecastCard";
 class FavoritesList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            count: 0
-        };
+        this.filterList = this.filterList.bind(this)
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.location !== this.props.location) {
-            this.props.loadForecast(this.props.location.lat, this.props.location.lon)
-        }
+    filterList() {
+        return this.props.weather.favorites.filter((item) => {
+            return  !this.props.weather.current || item.name !== this.props.weather.current.name
+        })
+    }
+
+    componentDidMount() {
+        this.props.loadFavorites()
     }
 
     render() {
         return (
             <div>
-                {this.props.weather.map((item, i) => {
+                {this.filterList().map((item, i) => {
                     return (<ForecastCard key={i} forecast={item}/>)
                 })}
             </div>
@@ -30,15 +32,14 @@ class FavoritesList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        location: state.location,
         weather: state.weather
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadForecast: (lat, lon) => {
-            dispatch(weatherActions.loadForecast(lat, lon))
+        loadFavorites: () => {
+            dispatch(weatherActions.loadFavorites())
         }
     }
 }
