@@ -1,3 +1,22 @@
+$flex-display: ("between": space-between, "center": center);
+$flex-align: ("center": center);
+
+@each $prefix, $value in $flex-display {
+  .justify-#{$prefix} {
+    justify-content: $value;
+  }
+}
+
+@each $prefix, $value in $flex-align {
+  .items-#{$prefix} {
+    align-items: $value;
+  }
+}
+
 .position-absolute {
   position: absolute;
+}
+
+.position-relative {
+  position: relative;
 }

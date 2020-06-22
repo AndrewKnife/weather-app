@@ -1,7 +1,7 @@
 {
-  "precipitation": "Precipitation",
+  "pressure": "Pressure",
   "humidity": "Humidity",
   "wind": "Wind",
-  "Country": "Country",
-  "City": "City"
+  "country": "Country",
+  "city": "City"
 }

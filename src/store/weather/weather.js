@@ -42,6 +42,7 @@ const weather = (state = initialState, action) => {
             items = []
             favs.forEach((favoriteItem) => {
                 res = require('../../assets/json/exampleForecastData.json')
+                res.name = favoriteItem.name
                 items.push(new WeatherForecast().loadFromResponse(res))
             })
             return {current: state.current, favorites: items};
@@ -56,6 +57,7 @@ const weather = (state = initialState, action) => {
             items = []
             favs.forEach((favoriteItem) => {
                 res = require('../../assets/json/exampleForecastData.json')
+                res.name = favoriteItem.name
                 items.push(new WeatherForecast().loadFromResponse(res))
             })
             return {current: state.current, favorites: items};
@@ -65,6 +67,7 @@ const weather = (state = initialState, action) => {
             items = []
             favs.forEach((favoriteItem) => {
                 res = require('../../assets/json/exampleForecastData.json')
+                res.name = favoriteItem.name
                 items.push(new WeatherForecast().loadFromResponse(res))
             })
             return {current: state.current, favorites: items};

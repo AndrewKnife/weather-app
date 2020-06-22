@@ -19,10 +19,8 @@ export function formatString(string, ...data) {
 export function findObjectInArrayByKeyValue(arr, key, value) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i][key] === value) {
-            console.log('returning: ', arr[i])
             return arr[i]
         }
     }
-    console.log('null')
     return null
 }

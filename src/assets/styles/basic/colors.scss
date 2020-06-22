@@ -1,0 +1,27 @@
+$gold: #ebc03f;
+$sea: #acd1d1;
+$sky: #cdf9ff;
+$cloud: #dce2e1;
+$dark-gray: #212121;
+
+$pageColors: (
+        "gold": $gold,
+        "sea": $sea,
+        "sky": $sky,
+        "cloud": $cloud,
+        "dark-gray": $dark-gray
+);
+
+@each $i in $pageColors {
+  .f-#{nth($i, 1)} {
+    fill: nth($i, 2);
+  }
+
+  .bg-#{nth($i, 1)} {
+    background-color: nth($i, 2);
+  }
+
+  .c-#{nth($i, 1)} {
+    color: nth($i, 2);
+  }
+}
