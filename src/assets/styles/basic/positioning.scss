@@ -1,3 +1,11 @@
+$flex-display: ("between": space-between);
+
+@each $prefix, $value in $flex-display {
+  .justify-#{$prefix} {
+    justify-content: $value;
+  }
+}
+
 .position-absolute {
   position: absolute;
 }

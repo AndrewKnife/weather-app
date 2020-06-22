@@ -5,6 +5,8 @@ import TranslationsHelper from "../services/helpers/TranslationsHelper";
 import weatherActions from "../store/weather/weatherActions";
 import {connect} from "react-redux";
 import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
+import SvgWrapper from "./basic/SvgWrapper";
+import {ICON} from "../services/GlobalConstants";
 
 class ForecastCard extends React.Component {
     constructor(props) {
@@ -44,20 +46,20 @@ class ForecastCard extends React.Component {
 
     render() {
         return (
-            <div className="text-center forecast-card m-auto my-4">
-                <span>{this.props.forecast.name}</span>
-                <div className="col-12">
+            <div className="text-center forecast-card m-auto my-4 pb-4 px-4">
+                <div className="card-header d-flex justify-between">
+                    <h3>{this.props.forecast.name}</h3>
+                    <button onClick={this.toggleFavorite} className="button-clear">
+                        <SvgWrapper icon={this.state.isFavorite? ICON.STAR_FULL : ICON.STAR_EMPTY} dimensions="35px" color="f-gold"/>
+                    </button>
+                </div>
+                <div className="col-12 text-center d-block">
                     <div className="d-inline-block"></div>
                     <div className="d-inline-block">{this.props.forecast.main.temp}</div>
                     <div className="d-inline-block">
-                        <div>{TranslationsHelper.translate('precipitation')}</div>
-                        <div>{TranslationsHelper.translate('humidity')}</div>
-                        <div>{TranslationsHelper.translate('wind')}</div>
-                    </div>
-                    <div className="position-absolute">
-                        <button
-                            onClick={this.toggleFavorite}>{this.state.isFavorite ? 'un' : ''}Favorite
-                        </button>
+                        <div>{TranslationsHelper.translate('precipitation')}: {this.props.forecast.main.temp}</div>
+                        <div>{TranslationsHelper.translate('humidity')}: {this.props.forecast.main.humidity}</div>
+                        <div>{TranslationsHelper.translate('wind')}: {this.props.forecast.main.pressure}</div>
                     </div>
                 </div>
             </div>

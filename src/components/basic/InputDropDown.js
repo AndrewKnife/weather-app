@@ -20,7 +20,6 @@ class InputDropDown extends React.Component {
     }
 
     handleActive(e) {
-        console.log(this.props.onActive)
         if (this.props.onActive) {
             this.props.onActive(e)
         }

@@ -1,0 +1,11 @@
+$gold: #ebc03f;
+
+$pageColors:(
+        "gold" $gold,
+);
+
+@each $i in $pageColors{
+  .f-#{nth($i, 1)} {
+    fill: nth($i, 2);
+  }
+}
