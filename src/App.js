@@ -6,15 +6,15 @@ import CurrentWeather from "./components/CurrentWeather";
 import IconSet from "./components/basic/IconSet";
 
 function App() {
-    return (
-        <div className="page-layout m-auto pb-2">
-            <IconSet/>
-            <Header/>
-            <SearchBar/>
-            <CurrentWeather/>
-            <Favorites/>
-        </div>
-    );
+  return (
+    <div className="page-layout m-auto pb-2">
+      <IconSet/>
+      <Header/>
+      <SearchBar/>
+      <CurrentWeather/>
+      <Favorites/>
+    </div>
+  );
 }
 
 export default App;
