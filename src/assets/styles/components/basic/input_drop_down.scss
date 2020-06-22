@@ -1,0 +1,50 @@
+.input-form {
+  display: inline-block;
+  width: auto;
+  position: relative;
+
+
+  input {
+    height: 30px;
+
+    &:focus {
+
+      + ol {
+        display: block;
+      }
+    }
+  }
+
+  input {
+    padding: 0 10px;
+    width: auto;
+  }
+
+  ol {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 0;
+    background-color: white;
+
+    &:hover {
+      display: block;
+    }
+  }
+
+  li {
+    line-height: 30px;
+    list-style-type: none;
+    &:hover {
+      background-color: lightgray;
+      cursor: pointer;
+    }
+  }
+
+  .input-dd {
+  }
+}

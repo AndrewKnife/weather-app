@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TranslationsHelper from "../services/helpers/TranslationsHelper";
 import weatherActions from "../store/weather/weatherActions";
 import {connect} from "react-redux";
-import UtilityHelper from "../services/helpers/UtilityHelper";
+import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
 
 class ForecastCard extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class ForecastCard extends React.Component {
     }
 
     isFavorite() {
-        return UtilityHelper.findObjectInArrayByKeyValue(this.props.weather.favorites, 'name', this.props.forecast.name) !== null
+        return findObjectInArrayByKeyValue(this.props.weather.favorites, 'name', this.props.forecast.name) !== null
     }
 
     render() {

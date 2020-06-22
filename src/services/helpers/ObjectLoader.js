@@ -1,4 +1,4 @@
-import UtilityHelper from './UtilityHelper'
+import {formatString} from './UtilityHelper'
 
 const KEY_MISMATCH_WARNING = 'The response contained a key that is not described in the store with key name: {0}'
 
@@ -16,7 +16,7 @@ class ObjectLoader {
         if (store.hasOwnProperty(key)) {
           store[key] = response[key]
         } else {
-          console.warn(UtilityHelper.formatString(KEY_MISMATCH_WARNING, key))
+          console.warn(formatString(KEY_MISMATCH_WARNING, key))
         }
       })
     }
