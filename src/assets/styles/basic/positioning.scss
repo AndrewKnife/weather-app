@@ -1,4 +1,5 @@
-$flex-display: ("between": space-between);
+$flex-display: ("between": space-between, "center": center);
+$flex-align: ("center": center);
 
 @each $prefix, $value in $flex-display {
   .justify-#{$prefix} {
@@ -6,6 +7,16 @@ $flex-display: ("between": space-between);
   }
 }
 
+@each $prefix, $value in $flex-align {
+  .items-#{$prefix} {
+    align-items: $value;
+  }
+}
+
 .position-absolute {
   position: absolute;
+}
+
+.position-relative {
+  position: relative;
 }

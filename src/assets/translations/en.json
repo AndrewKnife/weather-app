@@ -1,5 +1,5 @@
 {
-  "precipitation": "Precipitation",
+  "pressure": "Pressure",
   "humidity": "Humidity",
   "wind": "Wind",
   "country": "Country",

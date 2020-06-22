@@ -9,10 +9,9 @@
 }
 
 .clickable-icon {
-  opacity: 0.5;
   transition: 0.2s;
 
   &:hover {
-    opacity: 1;
+    filter: brightness(120%);
   }
 }

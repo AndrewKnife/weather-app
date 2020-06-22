@@ -1,0 +1,7 @@
+$fontSizes: ("xxxl": 52px, "xxl": 32px, "l": 16px, "m": 14px);
+
+@each $i in $fontSizes {
+  .font-size-#{nth($i, 1)} {
+    font-size: nth($i, 2);
+  }
+}

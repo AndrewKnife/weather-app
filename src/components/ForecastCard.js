@@ -6,7 +6,7 @@ import weatherActions from "../store/weather/weatherActions";
 import {connect} from "react-redux";
 import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
 import SvgWrapper from "./basic/SvgWrapper";
-import {ICON} from "../services/GlobalConstants";
+import {ICON, UNIT} from "../services/GlobalConstants";
 
 class ForecastCard extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class ForecastCard extends React.Component {
 
   render() {
     return (
-      <div className="text-center forecast-card m-auto my-4 pb-4 px-4">
+      <div className="text-center forecast-card m-auto my-4 pb-4 px-4 bg-sky">
         <div className="card-header d-flex justify-between">
           <h3>{this.props.forecast.name}</h3>
           <button onClick={this.toggleFavorite} className="button-clear">
@@ -54,13 +54,32 @@ class ForecastCard extends React.Component {
                         color="f-gold"/>
           </button>
         </div>
-        <div className="col-12 text-center d-block">
-          <div className="d-inline-block"></div>
-          <div className="d-inline-block">{this.props.forecast.main.temp}</div>
-          <div className="d-inline-block">
-            <div>{TranslationsHelper.translate('precipitation')}: {this.props.forecast.main.temp}</div>
-            <div>{TranslationsHelper.translate('humidity')}: {this.props.forecast.main.humidity}</div>
-            <div>{TranslationsHelper.translate('wind')}: {this.props.forecast.main.pressure}</div>
+        <div className="col-12 text-center d-flex items-center">
+          <div className="col-7 position-relative d-flex justify-center items-center">
+            <img src={require('../assets/images/weather/01d.png')} className="weather-icon pb-5" alt="weather-icon" width="100px"/>
+            <span className="font-size-xxxl display-inline-block position-relative">
+              {this.props.forecast.main.temp} <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
+            </span>
+            <span className="font-size-xxl c-sea display-inline-block position-relative pl-3">
+               /{this.props.forecast.main.temp_min}
+              <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
+            </span>
+          </div>
+          <div className="col-5">
+            <table className="d-inline-block text-left">
+              <tr>
+                <td>{TranslationsHelper.translate('pressure')}:</td>
+                <td>{this.props.forecast.main.pressure}{UNIT.MILLIBARS}</td>
+              </tr>
+              <tr>
+                <td>{TranslationsHelper.translate('humidity')}: </td>
+                <td>{this.props.forecast.main.humidity}{UNIT.PERCENT}</td>
+              </tr>
+              <tr>
+                <td>{TranslationsHelper.translate('wind')}:</td>
+                <td>{this.props.forecast.wind.speed}{UNIT.KM_H}</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
