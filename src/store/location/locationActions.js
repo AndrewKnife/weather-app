@@ -1,6 +1,5 @@
 export const LOCATION_ACTIONS = {
-  GET_LOCATION: 'GET_LOCATION',
-  GET_ADDRESS: 'GET_ADDRESS'
+  GET_LOCATION: 'GET_LOCATION'
 }
 
 class locationActions {
