@@ -10,7 +10,7 @@ const TEST_KEY = 'testKey'
 
 LocalStorage.saveToStorage(TEST_KEY, testItem)
 
-test('Saves To local storage and gets from it', () => {
+test('gets from Local storage', () => {
     expect(LocalStorage.getDataByKey(TEST_KEY)).toStrictEqual(testItem);
 });
 
