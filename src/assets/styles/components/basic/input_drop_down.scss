@@ -1,13 +1,12 @@
 .input-form {
   display: inline-block;
-  width: auto;
   position: relative;
 
 
   input {
     height: 30px;
     padding: 0 10px;
-    width: auto;
+    width: 100%;
 
     &.invalid {
       border: 1px solid red;

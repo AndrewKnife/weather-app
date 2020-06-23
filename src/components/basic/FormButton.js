@@ -13,14 +13,15 @@ class FormButton extends React.Component {
 
   render() {
     return (
-      <button className="mx-2" onClick={this.handleClick}>{this.props.label}</button>
+      <button className={'my-2 ' + this.props.class} onClick={this.handleClick}>{this.props.label}</button>
     );
   }
 }
 
 FormButton.propTypes = {
   onClick: PropTypes.func,
-  label: PropTypes.string
+  label: PropTypes.string,
+  class: PropTypes.string
 };
 
 export default FormButton
