@@ -2,9 +2,10 @@ class HistoryHelper {
   static setQueryParameter(key, value) {
     if ('URLSearchParams' in window) {
       let searchParams = new URLSearchParams(window.location.search)
-      searchParams.set(key, value)
-      let newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
-      window.history.replaceState(null, '', newRelativePathQuery);
+      value ? searchParams.set(key, value) : searchParams.delete(key)
+      let newRelativePathQuery = window.location.pathname
+      newRelativePathQuery += searchParams.toString() ? '?' + searchParams.toString() : ''
+      window.history.replaceState(null, '', newRelativePathQuery)
     }
   }
 

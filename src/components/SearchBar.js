@@ -25,6 +25,7 @@ class SearchBar extends React.Component {
     this.loadCountries = this.loadCountries.bind(this)
     this.loadCities = this.loadCities.bind(this)
     this.searchAction = this.searchAction.bind(this)
+    this.clearSearch = this.clearSearch.bind(this)
   }
 
   onCountryInput(value) {
@@ -75,6 +76,12 @@ class SearchBar extends React.Component {
     this.props.updateHistory(formatString('%s,%s', this.state.cityString, this.state.countryString))
   }
 
+  clearSearch(e) {
+    e.preventDefault()
+    this.setState({countryString: '', cityString: '', citiesList: []})
+    this.props.updateHistory('')
+  }
+
   render() {
     return (
       <form className="col-12 text-center" onClick={this.loadCountries}>
@@ -83,9 +90,22 @@ class SearchBar extends React.Component {
                        onChange={this.onCountryInput} placeholder={TranslationsHelper.translate('country')}/>
         <InputDropDown value={this.state.cityString} list={this.state.citiesList} onChange={this.onCityInput}
                        onActive={this.onCityActive} placeholder={TranslationsHelper.translate('city')}/>
-        <FormButton onClick={this.searchAction}/>
+        <FormButton onClick={this.searchAction} label={TranslationsHelper.translate('search')}/>
+        {this.props.history ? (
+          <div className="mt-3">
+            <span>{TranslationsHelper.translate('searched-for-label')}</span>
+            <span className="bold px-3">{this.props.history}</span>
+            <FormButton onClick={this.clearSearch} label={TranslationsHelper.translate('clear-search')}/>
+          </div>
+        ) : null}
       </form>
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    history: state.history
   }
 }
 
@@ -97,4 +117,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
