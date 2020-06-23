@@ -6,7 +6,8 @@ import weatherActions from "../store/weather/weatherActions";
 import {connect} from "react-redux";
 import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
 import SvgWrapper from "./basic/SvgWrapper";
-import {ICON, UNIT} from "../services/GlobalConstants";
+import {ICON, STORAGE_KEY, UNIT} from "../services/GlobalConstants";
+import LocalStorage from "../services/helpers/LocalStorage";
 
 class ForecastCard extends React.Component {
   constructor(props) {
@@ -21,9 +22,16 @@ class ForecastCard extends React.Component {
   toggleFavorite() {
     this.checkFavorite()
     if (this.state.isFavorite) {
+      LocalStorage.removeFromObjectArrayByIdKey(STORAGE_KEY.FAVORITES, 'name', this.props.forecast.name)
       this.props.removeFavorite(this.props.forecast.name)
     } else {
-      this.props.addFavorite(this.props.forecast.coord.lat, this.props.forecast.coord.lon, this.props.forecast.name)
+      let favItem = {
+        lat: this.props.forecast.coord.lat,
+        lon: this.props.forecast.coord.lon,
+        name: this.props.forecast.name
+      }
+      LocalStorage.saveToObjectArrayByIdKey(STORAGE_KEY.FAVORITES, favItem, 'name')
+      this.props.addFavorite(this.props.forecast)
     }
   }
 

@@ -1,36 +1,27 @@
 export const WEATHER_ACTIONS = {
   LOAD_FORECAST: 'LOAD_FORECAST',
-  SEARCH_FORECAST: 'SEARCH_FORECAST',
   LOAD_FAVORITES: 'LOAD_FAVORITES',
   ADD_FAVORITE: 'ADD_FAVORITE',
   REMOVE_FAVORITE: 'REMOVE_FAVORITE'
 }
 
 class weatherActions {
-  static loadForecast = (lat, lon) => {
+  static loadForecast = (resObject) => {
     return {
       type: WEATHER_ACTIONS.LOAD_FORECAST,
-      lat,
-      lon
+      resObject
     };
   };
-  static searchForecast = (query) => {
+  static loadFavorites = (arrayOfObjects) => {
     return {
-      type: WEATHER_ACTIONS.LOAD_FORECAST,
-      query
+      type: WEATHER_ACTIONS.LOAD_FAVORITES,
+      favoritesList: arrayOfObjects
     };
   };
-  static loadFavorites = () => {
-    return {
-      type: WEATHER_ACTIONS.LOAD_FAVORITES
-    };
-  };
-  static addFavorite = (lat, lon, name) => {
+  static addFavorite = (favoriteObject) => {
     return {
       type: WEATHER_ACTIONS.ADD_FAVORITE,
-      lat,
-      lon,
-      name
+      favoriteObject
     };
   };
   static removeFavorite = (name) => {
