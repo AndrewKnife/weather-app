@@ -3,13 +3,15 @@ $sea: #acd1d1;
 $sky: #cdf9ff;
 $cloud: #dce2e1;
 $dark-gray: #212121;
+$gray: #666;
 
 $pageColors: (
         "gold": $gold,
         "sea": $sea,
         "sky": $sky,
         "cloud": $cloud,
-        "dark-gray": $dark-gray
+        "dark-gray": $dark-gray,
+        "gray": $gray
 );
 
 @each $i in $pageColors {

@@ -7,7 +7,7 @@ class SvgWrapper extends React.Component {
       <svg xmlns="http://www.w3.org/2000/svg"
            width={this.props.dimensions}
            height={this.props.dimensions}
-           className={"clickable-icon " + this.props.color}>
+           className={"clickable-icon " + this.props.class}>
         <use href={this.props.icon}/>
       </svg>
     );
@@ -17,7 +17,7 @@ class SvgWrapper extends React.Component {
 SvgWrapper.propTypes = {
   icon: PropTypes.string,
   dimensions: PropTypes.string,
-  color: PropTypes.string
+  class: PropTypes.string
 };
 
 export default SvgWrapper
