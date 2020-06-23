@@ -4,6 +4,11 @@ An application that shows you the current weather and lets you check out all the
 
 Run `npm install` after pulling the project.
 
+## Setup
+
+You will have to add `REACT_APP_WEATHER_API_KEY` yo your `.env` from
+https://rapidapi.com/community/api/open-weather-map
+
 ## Available Scripts
 
 In the project directory, you can run:

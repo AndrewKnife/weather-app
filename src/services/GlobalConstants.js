@@ -13,3 +13,7 @@ export const UNIT = {
     KM_H: "km/h",
     MILLIBARS: "mb"
 }
+
+export const STORAGE_KEY = {
+    FAVORITES: 'favoritesList'
+}
