@@ -27,3 +27,7 @@ $pageColors: (
     color: nth($i, 2);
   }
 }
+
+.grad-black {
+  background-image: linear-gradient(to top right, $gray, $sky);
+}

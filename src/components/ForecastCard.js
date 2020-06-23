@@ -59,7 +59,7 @@ class ForecastCard extends React.Component {
 
   render() {
     return (
-      <div className="text-center forecast-card m-auto my-4 pb-4 px-4">
+      <div className="text-center forecast-card m-auto my-4 pb-4 px-2">
         <div className="card-header d-flex justify-between">
           <h3>{this.props.forecast.name}</h3>
           <button onClick={this.toggleFavorite} className="button-clear">
@@ -69,7 +69,7 @@ class ForecastCard extends React.Component {
         </div>
         <div className="col-12 text-center d-flex items-center">
           <div className="col-2">
-            <img src={this.getIcon()} className="weather-icon mb-5 bg-dark-gray" alt="weather-icon"
+            <img src={this.getIcon()} className="weather-icon mb-5 grad-black" alt="weather-icon"
                  width="100px"/>
           </div>
           <div className="col-5 position-relative d-flex justify-center items-center">
