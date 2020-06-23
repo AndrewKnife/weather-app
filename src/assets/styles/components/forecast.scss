@@ -1,5 +1,7 @@
 .forecast-card {
   max-width: 800px;
+  border: 1px solid $dark-gray;
+  border-radius: 12px;
 
   table td {
     padding: 0 10px;
@@ -8,8 +10,6 @@
   }
 
   .weather-icon {
-    //position: absolute;
-    //left: 20%;
-    //top: -50%;
+    border-radius: 100%;
   }
 }

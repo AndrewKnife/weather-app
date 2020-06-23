@@ -15,13 +15,10 @@ class CurrentWeather extends Component {
   }
 
   componentDidMount() {
-    console.log('this.props.history', this.props.history)
-    console.log('navigator.geolocation', navigator.geolocation)
     if (this.props.history) {
       this.searchForecast(this.props.history)
     } else if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        console.log('position', position)
         if(position) {
          this.props.getLocation(position.coords.latitude, position.coords.longitude)
         } else {
