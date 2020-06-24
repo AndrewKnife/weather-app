@@ -13,7 +13,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="page-layout m-auto pb-2">
+      <div className="page-layout m-auto pb-2 px-2">
         <IconSet/>
         <Header/>
         <SearchBar/>

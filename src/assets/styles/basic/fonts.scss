@@ -5,3 +5,7 @@ $fontSizes: ("xxxl": 52px, "xxl": 32px, "l": 16px, "m": 14px);
     font-size: nth($i, 2);
   }
 }
+
+.bold {
+  font-weight: 700;
+}

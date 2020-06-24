@@ -4,5 +4,8 @@
   "wind": "Wind",
   "country": "Country",
   "city": "City",
-  "no-favorites-message": "You don't have any favorites yet!"
+  "no-favorites-message": "You don't have any favorites yet!",
+  "search": "Search",
+  "searched-for-label": "Showing weather for:",
+  "clear-search": "Clear Search"
 }
