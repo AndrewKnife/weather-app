@@ -13,6 +13,9 @@ class CurrentWeather extends Component {
     this.loadForecast = this.loadForecast.bind(this)
     this.searchForecast = this.searchForecast.bind(this)
     this.getLocation = this.getLocation.bind(this)
+    this.state = {
+      locationLoaded: false
+    }
   }
 
   componentDidMount() {
@@ -28,24 +31,29 @@ class CurrentWeather extends Component {
   componentDidUpdate(prevProps, prevState, ss) {
     if (prevProps.history !== this.props.history && this.props.history) {
       this.searchForecast(this.props.history)
-    } else if (!this.props.location) {
+    } else if (!this.props.location && !this.state.locationLoaded && !this.props.history) {
       this.getLocation()
     } else if (this.props.location && prevProps.location !== this.props.location && !this.props.history) {
       this.loadForecast(this.props.location.lat, this.props.location.lon)
-    } else if (this.props.history === '' && prevProps.history !== this.props.history) {
+    } else if (this.props.location && this.props.history === '' && prevProps.history !== this.props.history) {
       this.loadForecast(this.props.location.lat, this.props.location.lon)
+    } else if (prevProps.history !== this.props.history && !this.props.history) {
+      this.searchForecast(DEFAULT_WEATHER_LOCATION)
     }
   }
 
-  getLocation(){
+  getLocation() {
     navigator.geolocation.getCurrentPosition(position => {
-      if(position) {
+      if (position) {
         this.props.getLocation(position.coords.latitude, position.coords.longitude)
       } else {
         this.searchForecast(DEFAULT_WEATHER_LOCATION)
       }
     }, () => {
       this.searchForecast(DEFAULT_WEATHER_LOCATION)
+    })
+    this.setState({
+      locationLoaded: true
     })
   }
 

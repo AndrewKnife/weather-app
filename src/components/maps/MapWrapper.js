@@ -9,14 +9,19 @@ export class MapWrapper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasWeatherData: this.props.weather && this.props.weather.current
+      hasWeatherData: this.props.weather && this.props.weather.current,
+      coord: {
+        lat: null,
+        lon: null
+      }
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.weather !== this.props.weather) {
+    if (prevProps.weather.current !== this.props.weather.current) {
       this.setState({
-        hasWeatherData: !(!this.props.weather)
+        hasWeatherData: !(!this.props.weather),
+        coord: this.props.weather.current.coord
       })
     }
   }
@@ -24,9 +29,9 @@ export class MapWrapper extends Component {
   render() {
     return (
       <div className="col-12 position-relative m-auto mb-4" style={{maxWidth: '800px'}}>
-        {this.state.hasWeatherData ? (
+        {this.state.hasWeatherData && this.state.coord.lat ?(
           <Suspense fallback={null}>
-            <MapContainer lat={this.props.weather.current.coord.lat} lon={this.props.weather.current.coord.lon}/>
+            <MapContainer lat={this.state.coord.lat} lon={this.state.coord.lon}/>
           </Suspense>
         ) : null}
       </div>

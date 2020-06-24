@@ -10,8 +10,6 @@ const weather = (state = initialState, action) => {
   switch (action.type) {
     case WEATHER_ACTIONS.LOAD_FORECAST:
       return {current: action.resObject, favorites: state.favorites}
-    case WEATHER_ACTIONS.LOAD_FAVORITES:
-      return {current: state.current, favorites: action.favoritesList};
     case WEATHER_ACTIONS.ADD_FAVORITE:
       items = state.favorites || []
       items.push(action.favoriteObject)

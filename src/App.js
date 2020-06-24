@@ -19,7 +19,7 @@ class App extends Component {
         <SearchBar/>
         <CurrentWeather/>
         <MapWrapper/>
-        {/*<Favorites/>*/}
+        <Favorites/>
       </div>
     );
   }
