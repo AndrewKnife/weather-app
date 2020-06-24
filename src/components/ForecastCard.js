@@ -49,7 +49,12 @@ class ForecastCard extends React.Component {
   }
 
   getIcon () {
-    return require('../assets/images/weather/'+this.props.forecast.weather[0].icon+'.png')
+    try {
+      return require('../assets/images/weather/'+this.props.forecast.weather[0].icon+'.png')
+    } catch (e) {
+      console.warn(e)
+      return require('../assets/images/weather/01d.png')
+    }
   }
 
   checkFavorite = () => {

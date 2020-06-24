@@ -12,12 +12,6 @@ class weatherActions {
       resObject
     };
   };
-  static loadFavorites = (arrayOfObjects) => {
-    return {
-      type: WEATHER_ACTIONS.LOAD_FAVORITES,
-      favoritesList: arrayOfObjects
-    };
-  };
   static addFavorite = (favoriteObject) => {
     return {
       type: WEATHER_ACTIONS.ADD_FAVORITE,

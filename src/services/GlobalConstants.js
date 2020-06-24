@@ -1,5 +1,6 @@
 export const REQUEST_URL = {
     WEATHER: 'https://api.openweathermap.org/data/2.5/weather',
+    WEATHER_MAPS: 'http://maps.openweathermap.org/maps/2.0/weather/%s/%s/%s/%s',
 }
 
 export const ICON = {

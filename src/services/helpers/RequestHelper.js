@@ -8,6 +8,14 @@ class RequestHelper {
         return RequestHelper.Singleton
     }
 
+    sendPostRequest (url, requestData) {
+        return getAxios().then(
+          axios => {
+              return axios.post(url, requestData)
+          }
+        )
+    }
+
     async sendGetRequest (url, requestData = {}, headers = null) {
         return getAxios().then(
             axios => {

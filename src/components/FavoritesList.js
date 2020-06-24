@@ -10,6 +10,9 @@ import WeatherHelper from "../services/api/WeatherHelper";
 class FavoritesList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      favs: []
+    }
     this.filterList = this.filterList.bind(this)
     this.fetchFavoriteCities = this.fetchFavoriteCities.bind(this)
   }
@@ -18,25 +21,31 @@ class FavoritesList extends Component {
     this.fetchFavoriteCities()
   }
 
-  fetchFavoriteCities(){
-    let savedFavorites = LocalStorage.getDataByKey(STORAGE_KEY.FAVORITES) || []
-    let favorites = []
-    for (let favorite of savedFavorites) {
-      WeatherHelper.loadForecast(favorite.lat, favorite.lon).then((res) => {
-        favorites.push(res)
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.favs.length !== this.props.weather.favorites.length) {
+      this.setState({
+        favs: this.props.weather.favorites
       })
     }
-    this.props.loadFavorites(favorites)
+  }
+
+  fetchFavoriteCities(){
+    let savedFavorites = LocalStorage.getDataByKey(STORAGE_KEY.FAVORITES) || []
+    for (let favorite of savedFavorites) {
+      WeatherHelper.loadForecast(favorite.lat, favorite.lon).then((res) => {
+        this.props.addFavorite(res)
+      })
+    }
   }
 
   filterList() {
-    return this.props.weather.favorites.filter((item) => {
+    return this.state.favs.filter((item) => {
       return !this.props.weather.current || item.name !== this.props.weather.current.name
     })
   }
 
   render() {
-    const hasItems = this.filterList().length > 0
+    const hasItems = this.state.favs.length > 0
     let message = null
     if (!hasItems) {
       message = <span>{TranslationsHelper.translate('no-favorites-message')}</span>
@@ -44,8 +53,8 @@ class FavoritesList extends Component {
 
     return (
       <div>
-        {this.filterList().map((item, i) => {
-          return (<ForecastCard key={i} forecast={item}/>)
+        {this.filterList().map((item) => {
+          return (<ForecastCard key={item.name} forecast={item}/>)
         })}
         {message}
       </div>
@@ -61,8 +70,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadFavorites: (favorites) => {
-      dispatch(weatherActions.loadFavorites(favorites))
+    addFavorite: (favorite) => {
+      dispatch(weatherActions.addFavorite(favorite))
     }
   }
 }

@@ -17,6 +17,7 @@ export class MapContainer extends Component {
       <div style={wrapperStyles}>
         <Map
           google={this.props.google}
+          key={this.props.lat}
           zoom={14}
           style={mapStyles}
           initialCenter={{
