@@ -3,7 +3,7 @@ import {REQUEST_URL} from '../GlobalConstants';
 import WeatherForecast from '../../modules/WeatherForecast';
 import SiteConfig from '../SiteConfig';
 
-let requestData = {
+const requestData = {
   appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
   lang: SiteConfig.locale,
   units: 'metric'
@@ -13,11 +13,14 @@ class WeatherHelper {
   static loadForecast(lat, lon) {
     requestData.lat = lat
     requestData.lon = lon
+    requestData.q = null
     return this.getData(requestData)
   }
 
   static searchForecast(query) {
     requestData.q = query
+    requestData.lat = null
+    requestData.lon = null
     return this.getData(requestData)
   }
 
