@@ -42,7 +42,9 @@ class ForecastCard extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.weather.favorites !== this.props.weather.favorites) {
-      this.checkFavorite()
+      this.checkFavorite(prevProps.weather.favorites !== this.props.weather.favorites)
+    } else if (prevProps.weather.current !== this.props.weather.current) {
+      this.checkFavorite(prevProps.weather.favorites !== this.props.weather.favorites)
     }
   }
 
