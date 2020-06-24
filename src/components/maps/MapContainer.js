@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import {Map, GoogleApiWrapper} from 'google-maps-react';
+import PropTypes from 'prop-types';
 
 const wrapperStyles = {
   height: '400px'
@@ -23,7 +23,10 @@ export class MapContainer extends Component {
             lat: this.props.lat,
             lng: this.props.lon
           }}
-        />
+          draggableCursor={'auto'}
+          draggable={false}
+          disableDoubleClickZoom
+          disableDefaultUI/>
       </div>
     );
   }
