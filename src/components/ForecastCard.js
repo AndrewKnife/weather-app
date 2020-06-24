@@ -81,10 +81,10 @@ class ForecastCard extends React.Component {
           </div>
           <div className="col-5 position-relative d-flex justify-center items-center">
             <span className="font-size-xxxl display-inline-block position-relative">
-              {this.props.forecast.main.temp} <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
+              {Math.round(this.props.forecast.main.temp)} <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
             </span>
             <span className="font-size-xxl c-gray display-inline-block position-relative pl-3">
-               /{this.props.forecast.main.temp_min}
+               /{Math.round(this.props.forecast.main.temp_min)}
               <span className="font-size-l position-absolute">{UNIT.CELSIUS}</span>
             </span>
           </div>
