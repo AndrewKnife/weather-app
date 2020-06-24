@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import ForecastCard from "./ForecastCard";
 import WeatherHelper from "../services/api/WeatherHelper";
 import locationActions from "../store/location/locationActions";
+// import WeatherForecast from "../modules/WeatherForecast";
 
 const DEFAULT_WEATHER_LOCATION = 'Vilnius,Lithuania'
 
@@ -44,13 +45,14 @@ class CurrentWeather extends Component {
     WeatherHelper.loadForecast(lat, lon).then((res) => {
       this.props.loadForecast(res)
     })
+    // this.props.loadForecast(new WeatherForecast().loadFromResponse(require('../assets/json/exampleForecastData_lt.json')))
   }
 
   searchForecast(query) {
     WeatherHelper.searchForecast(query).then((res) => {
       this.props.loadForecast(res)
-      return res
     })
+    // this.props.loadForecast(new WeatherForecast().loadFromResponse(require('../assets/json/exampleForecastData_lt.json')))
   }
 
   render() {

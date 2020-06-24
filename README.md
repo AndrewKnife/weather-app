@@ -6,8 +6,12 @@ Run `npm install` after pulling the project.
 
 ## Setup
 
-You will have to add `REACT_APP_WEATHER_API_KEY` yo your `.env` from
-https://rapidapi.com/community/api/open-weather-map
+You will have to add the following api keys to .env on the project root:
+
+ `REACT_APP_WEATHER_API_KEY` from https://rapidapi.com/community/api/open-weather-map
+ 
+ `REACT_APP_GOOGLE_API_KEY`
+
 
 ## Available Scripts
 

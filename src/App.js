@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Favorites from "./components/Favorites";
 import CurrentWeather from "./components/CurrentWeather";
 import IconSet from "./components/basic/IconSet";
+import MapWrapper from "./components/maps/MapWrapper";
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,8 @@ class App extends Component {
         <Header/>
         <SearchBar/>
         <CurrentWeather/>
-        <Favorites/>
+        <MapWrapper/>
+        {/*<Favorites/>*/}
       </div>
     );
   }
