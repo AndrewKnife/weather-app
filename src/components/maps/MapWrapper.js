@@ -39,7 +39,7 @@ export class MapWrapper extends Component {
       <div className="col-12 position-relative m-auto mb-4" style={{maxWidth: '800px'}}>
         {this.state.hasWeatherData && this.state.coord.lat ? (
           <Suspense fallback={null}>
-            <MapContainer lat={this.state.coord.lat} lon={this.state.coord.lon}/>
+            <MapContainer lat={this.state.coord.lat} lon={this.state.coord.lon} selectedLayer={this.state.selectedLayer}/>
             <MapControls selectedLayer={this.state.selectedLayer} onClick={this.toggleLayer}/>
           </Suspense>
         ) : null}
