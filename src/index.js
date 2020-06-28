@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import './assets/styles/index.scss';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet';
 import * as serviceWorker from './services/serviceWorker';
 import {createStore} from 'redux';
 import {allReducers} from "./store";

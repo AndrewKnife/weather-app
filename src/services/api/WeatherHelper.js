@@ -5,28 +5,17 @@ import SiteConfig from '../SiteConfig';
 import {formatString} from "../helpers/UtilityHelper";
 
 const LAYER_NAME = {
-  AIR_TEMPERATURE: 'TA2',
-  ACCUMULATED_PRECIPITATION: 'PA0',
-  ATMOSPHERIC_PRESSURE: 'APM',
-  WIND_SPEED: 'WND',
+  PRECIPITATION: 'precipitation_new',
+  TEMPERATURE: 'temp_new',
+  WIND: 'wind_new',
+  PRESSURE: 'pressure_new',
+  CLOUDS: 'clouds_new',
 }
 
 let requestData = {
   appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
   lang: SiteConfig.locale,
   units: 'metric'
-}
-
-let mapData = {
-  layer: LAYER_NAME.ACCUMULATED_PRECIPITATION,
-  z: '14',
-  x: '139',
-  y: '35'
-}
-
-let mapConfig = {
-  appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
-  date: 1527811200
 }
 
 class WeatherHelper {
@@ -46,11 +35,8 @@ class WeatherHelper {
     return this.getData(req)
   }
 
-  static getMap() {
-    let url = formatString(REQUEST_URL.WEATHER_MAPS, mapData.layer, mapData.z, mapData.x, mapData.y)
-    return RequestHelper.sendGetRequest(url, mapConfig, {headers: {appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY}}).then((res) => {
-      return new WeatherForecast().loadFromResponse(res.data)
-    })
+  static getTileUrl(){
+    return formatString(REQUEST_URL.WEATHER_MAPS_TILE, LAYER_NAME.TEMPERATURE, process.env.REACT_APP_OPEN_WEATHER_API_KEY)
   }
 
   static getData(req) {
