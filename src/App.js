@@ -5,6 +5,7 @@ import Favorites from "./components/Favorites";
 import CurrentWeather from "./components/CurrentWeather";
 import IconSet from "./components/basic/IconSet";
 import MapWrapper from "./components/maps/MapWrapper";
+import WeatherIconSet from "./components/basic/WeatherIconSet";
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <div className="page-layout m-auto pb-2 px-2">
         <IconSet/>
+        <WeatherIconSet/>
         <Header/>
         <SearchBar/>
         <CurrentWeather/>
