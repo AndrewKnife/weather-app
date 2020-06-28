@@ -1,0 +1,11 @@
+.weather-button {
+  transition: 0.2s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &.active svg {
+    fill: $gold;
+  }
+}

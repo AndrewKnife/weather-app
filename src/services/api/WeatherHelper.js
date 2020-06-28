@@ -1,16 +1,8 @@
 import RequestHelper from '../helpers/RequestHelper';
-import {REQUEST_URL} from '../GlobalConstants';
+import {REQUEST_URL, WEATHER_LAYER} from '../GlobalConstants';
 import WeatherForecast from '../../modules/WeatherForecast';
 import SiteConfig from '../SiteConfig';
 import {formatString} from "../helpers/UtilityHelper";
-
-const LAYER_NAME = {
-  PRECIPITATION: 'precipitation_new',
-  TEMPERATURE: 'temp_new',
-  WIND: 'wind_new',
-  PRESSURE: 'pressure_new',
-  CLOUDS: 'clouds_new',
-}
 
 let requestData = {
   appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
@@ -35,8 +27,8 @@ class WeatherHelper {
     return this.getData(req)
   }
 
-  static getTileUrl(){
-    return formatString(REQUEST_URL.WEATHER_MAPS_TILE, LAYER_NAME.TEMPERATURE, process.env.REACT_APP_OPEN_WEATHER_API_KEY)
+  static getTileUrl(layerName){
+    return formatString(REQUEST_URL.WEATHER_MAPS_TILE, layerName, process.env.REACT_APP_OPEN_WEATHER_API_KEY)
   }
 
   static getData(req) {

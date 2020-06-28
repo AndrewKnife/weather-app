@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import WeatherHelper from "../../services/api/WeatherHelper";
-import {REQUEST_URL} from "../../services/GlobalConstants";
+import {REQUEST_URL, WEATHER_LAYER} from "../../services/GlobalConstants";
 
 const mapStyles = {
   width: '100%',
@@ -18,7 +18,7 @@ export class MapContainer extends Component {
   
   componentDidMount() {
     if (typeof window.L !== undefined) {
-      this.state.map = window.L.map('mapid').setView([this.props.lat, this.props.lon], 11);
+      this.state.map = window.L.map('mapid').setView([this.props.lat, this.props.lon], 11)
       window.L.tileLayer(REQUEST_URL.MAPBOX, {
         maxZoom: 18,
         id: 'mapbox/streets-v11',
@@ -26,7 +26,7 @@ export class MapContainer extends Component {
         zoomOffset: -1,
       }).addTo(this.state.map);
       
-      window.L.tileLayer(WeatherHelper.getTileUrl(), {
+      window.L.tileLayer(WeatherHelper.getTileUrl(WEATHER_LAYER.CLOUDS.name), {
         maxZoom: 18,
         id: 'temp',
         appId: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
