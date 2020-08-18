@@ -8,8 +8,10 @@ import {findObjectInArrayByKeyValue} from "../services/helpers/UtilityHelper";
 import SvgWrapper from "./basic/SvgWrapper";
 import {ICON, STORAGE_KEY, UNIT} from "../services/GlobalConstants";
 import LocalStorage from "../services/helpers/LocalStorage";
+import {FavoritesContext} from "../contexts/FavoritesContext";
 
 class ForecastCard extends React.Component {
+  static contextType = FavoritesContext
   constructor(props) {
     super(props);
     this.state = {
@@ -65,9 +67,10 @@ class ForecastCard extends React.Component {
   }
 
   render() {
+    console.log(this.context)
     return (
       <div className="text-center forecast-card m-auto my-4 pb-4 px-2">
-        <div className="card-header d-flex justify-between">
+        <div className="card-heade r d-flex justify-between">
           <h3>{this.props.forecast.name}</h3>
           <button onClick={this.toggleFavorite} className="button-clear">
             <SvgWrapper icon={this.state.isFavorite ? ICON.STAR_FULL : ICON.STAR_EMPTY} dimensions="35px"

@@ -5,6 +5,7 @@ import Favorites from "./components/Favorites";
 import CurrentWeather from "./components/CurrentWeather";
 import IconSet from "./components/basic/IconSet";
 import MapWrapper from "./components/maps/MapWrapper";
+import FavoritesContextProvider from "./contexts/FavoritesContext";
 
 class App extends Component {
   componentDidMount() {
@@ -17,9 +18,13 @@ class App extends Component {
         <IconSet/>
         <Header/>
         <SearchBar/>
-        <CurrentWeather/>
+        <FavoritesContextProvider>
+          <CurrentWeather/>
+        </FavoritesContextProvider>
         <MapWrapper/>
-        <Favorites/>
+        <FavoritesContextProvider>
+          <Favorites/>
+        </FavoritesContextProvider>
       </div>
     );
   }

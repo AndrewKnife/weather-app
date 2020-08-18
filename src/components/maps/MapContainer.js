@@ -3,7 +3,7 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 import PropTypes from 'prop-types';
 
 const wrapperStyles = {
-  height: '400px'
+  height: '401px'
 };
 
 const mapStyles = {
